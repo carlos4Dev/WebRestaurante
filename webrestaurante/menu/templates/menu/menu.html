@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block title %}Menú{% endblock %}
+
+{% block content %}
+    
+    <h1 style="color:olivedrab">Menú especial Navidad</h1>
+    <br>
+    {% for categoria in categorias %}
+        <div>
+            <h2 style="color:darkslategray">{{ categoria }}</h2>
+            {% for plato in platos %}
+            <div>
+                <h3 style="color:darkcyan">{% if plato.categoria_id_id == categoria.categoria_id %}{{ plato }}{% endif %}</h3>
+            </div>
+            {% endfor %}
+        </div>
+        <br>
+    {% endfor %}
+
+{% endblock %}
+</body>
+</html>
