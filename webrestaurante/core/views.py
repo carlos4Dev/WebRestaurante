@@ -1,9 +1,13 @@
+from django.views.generic.base import TemplateView
 from django.shortcuts import render
 
 # Create your views here.
 
-def home(request):
-    return render(request, "core/home.html")
+class HomePageView(TemplateView):
+    template_name = "core/home.html"
 
-def about(request):
-    return render(request, "core/about.html")
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, {'title':"Restaurante BitBrasas El mejor"})
+
+class AboutPageView(TemplateView):
+    template_name = "core/about.html"

@@ -15,13 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from menu.urls import menu_patterns
+from profiles.urls import profiles_patterns
 from django.conf import settings
 
 urlpatterns = [
     # Path del core
     path('', include('core.urls')),
     # Path del menu
+    path('menu/', include(menu_patterns)),
     path('menu/', include('menu.urls')),
     # Path del admin
     path('admin/', admin.site.urls),
+    # Paths de Auth
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('registration.urls')),
+    # Paths de profiles
+    path('profiles/', include(profiles_patterns))
 ]

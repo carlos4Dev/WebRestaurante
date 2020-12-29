@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Categorías{% endblock %}
+{% block content %}
+{% include 'menu/includes/menu_menu.html' %}
+<main role="main">
+  <div class="container mb-4">
+    {% for categoria in categoria_list|dictsort:"categoria_id" reversed %}
+      <div class="row mt-3">
+        <div class="col-md-9 mx-auto">
+          <h2 class="mb-4">{{categoria.nombre}}</h2>
+          <div>
+            <p>{{categoria.nombre|striptags|safe|truncatechars:"200"}}</p>
+            <p><a href="{% url 'menu:categoria' categoira.id categoria.nombre|slugify %}">Leer más</a>
+              {% if request.user.is_staff %}
+                | <a href="{% url 'menu:update' categoria.id %}">Editar</a>
+                | <a href="{% url 'menu:delete' categoria.id %}">Borrar</a>
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}

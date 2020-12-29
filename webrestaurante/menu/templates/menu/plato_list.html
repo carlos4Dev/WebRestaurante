@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Platos{% endblock %}
+{% block content %}
+{% include 'menu/includes/menu_menu.html' %}
+<main role="main">
+  <div class="container mb-4">
+    {% for plato in plato_list|dictsort:"plato_id" reversed %}
+      <div class="row mt-3">
+        <div class="col-md-9 mx-auto">
+          <h2 class="mb-4">{{plato.nombre}}</h2>
+          <div>
+            <p>{{plato.nombre|striptags|safe|truncatechars:"200"}}</p>
+            <p><a href="{% url 'menu:plato' menu.plato.plato_id menu.plato.nombre|slugify %}">Leer más</a>
+              {% if request.user.is_staff %}
+                | <a href="{% url 'menu:update' menu.plato_id %}">Editar</a>
+                | <a href="{% url 'menu:delete' menu.plato_id %}">Borrar</a>
+              {% endif %}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}
