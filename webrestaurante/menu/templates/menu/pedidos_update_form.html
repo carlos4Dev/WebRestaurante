@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Actualizar plato{% endblock %}
+{% block title %}Actualizar pedido{% endblock %}
 {% block content %}
 {% include 'menu/includes/menu_menu.html'%}
 <main role="main">
@@ -10,14 +10,14 @@
         <div>
           {% if 'ok' in request.GET %}
             <p style="color:green;">
-              Plato editado correctamente. 
+              Pedido actualizado correctamente. 
               <a href="">Haz clic aquí para ver el resultado</a>.
             </p>
           {% endif %}
           <form action="" method="post">{% csrf_token %}
             {{ form.as_p }}
           <div class="text-center">
-            <input type="submit" class="btn btn-primary btn-block" value="Actualizar plato" />
+            <input type="submit" class="btn btn-primary btn-block" value="Actualizar pedido" />
           </div>
         </form>
         </div>

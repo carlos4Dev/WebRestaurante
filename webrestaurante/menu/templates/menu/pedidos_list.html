@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Pedidos{% endblock %}
+{% block content %}
+{% include 'menu/includes/menu_menu.html' %}
+<main role="main">
+  <div class="container mb-4">
+    {% for pedido in pedido_list|dictsort:"pedido_id" reversed %}
+      <div class="row mt-3">
+        <div class="col-md-9 mx-auto">
+          <h2 class="mb-4">{{pedido.cliente}}</h2>
+          <div>
+            <p>{{pedido.status}}</p>
+            <p>
+              <a href="{% url 'menu:updatePedidos' pedido.pedido_id %}">Editar Pedido</a>
+              | <a href="{% url 'menu:deletePedidos' pedido.pedido_id %}">Eliminar Pedido</a>
+              | <a href="{% url 'menu:pedido' pedido.pedido_id %}">Detalle Pedido</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</main>
+{% endblock %}

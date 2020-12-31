@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}Eliminar pedido{% endblock %}
+{% block title %}Eliminar plato{% endblock %}
 {% block content %}
 {% include 'menu/includes/menu_menu.html'%}
 <main role="main">
@@ -10,7 +10,7 @@
         <div>
           <form action="" method="post">{% csrf_token %}
             <p>¿Estás seguro de que quieres borrar <b>"{{ object }}"</b>?</p>
-            <input type="submit" class="btn btn-primary btn-block" value="Sí, borrar el plato" />
+            <input type="submit" class="btn btn-primary btn-block" value="Sí, borrar el pedido" />
           </form>
         </div>
       </div>

@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Pedido{% endblock %}
+{% block content %}
+{% include 'menu/includes/menu_menu.html' %}
+
+{% for pedido in pedidos %}
+<h1 style="color:olivedrab">
+    {% if pedido.pedido_id == 2 %}
+        Pedido nº {{ pedido.pedido_id }} - {{pedido.cliente}}
+    {% endif %}
+</h1>
+<br>
+<div>
+
+    <h3 style="color:darkcyan">
+        {% if pedido.pedido_id == 2 %}
+        Estado: {{pedido.status}}<br>
+        Platos: {{pedido.nombre}}
+        {% endif %}
+    </h3>
+</div>
+    
+{% endfor %}
+<div>
+  
+    <h2 style="color:darkslategray"></h2>
+
+    <div>
+
+    </div>
+</div>
+<br>
+
+
+{% endblock %}

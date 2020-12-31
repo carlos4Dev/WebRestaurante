@@ -4,22 +4,15 @@
 {% block content %}
 {% include 'menu/includes/menu_menu.html' %}
     
-    <h1 style="color:olivedrab">Menú especial Navidad</h1>
-    <br>
+    <h1 style="color:olivedrab">Menú para hoy:</h1>
     {% for categoria in categorias %}
         <div>
             <h2 style="color:darkslategray">{{ categoria }}</h2>
             {% for plato in platos %}
             <div>
-                <h3 style="color:darkcyan">{% if plato.categoria_id_id == categoria.categoria_id %}{{ plato }}{% endif %}</h3>
+                <h3 style="color:darkcyan">{% if plato.categoria_id_id == categoria.categoria_id %}{{ plato }} - {{plato.precio}} € {% endif %}</h3>
             </div>
             {% endfor %}
-            <p>
-                {% if request.user.is_staff %}
-                    <a href="{% url 'menu:update' %}">Editar</a>
-                    | <a href="{% url 'menu:delete' %}">Borrar</a>
-                {% endif %}
-            </p>
         </div>
         <br>
     {% endfor %}

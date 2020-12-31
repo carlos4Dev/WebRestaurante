@@ -19,15 +19,16 @@ class UserCreationFormWithEmail(UserCreationForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['avatar', 'bio', 'link']
+        fields = ['user','avatar', 'bio', 'link']
         widgets = {
+            'user': forms.TextInput(attrs={'class':'form-control'}),
             'avatar': forms.ClearableFileInput(attrs={'class':'form-control-file mt-3'}),
             'bio': forms.Textarea(attrs={'class':'form-control mt-3', 'rows':3, 'placeholder':'Cargo'}),
             'link': forms.URLInput(attrs={'class':'form-control mt-3','placeholder':'Enlace'}),
         }
 
 class EmailForm(forms.ModelForm):
-    email = forms.EmailField(required=True, help_text="Requirido, 254 caracteres como máximo y debe ser válido")
+    email = forms.EmailField(required=True, help_text="Requerido, 254 caracteres como máximo y debe ser válido")
 
     class Meta:
         model = User

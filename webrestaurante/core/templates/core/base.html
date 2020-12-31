@@ -28,33 +28,38 @@
 
             <div class="collapse navbar-collapse" id="ned">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item px-lg-4 {% if request.path == '/' %}active{% endif %}">
-                        <a class="nav-link text-uppercase text-expanded font-weight-bold" href="{% url 'home' %}">Inicio</a>
-                    </li>
                     <li class="nav-item px-lg-4 {% if request.path == '/menu/' %}active{% endif %}">
                         <a class="nav-link text-uppercase text-expanded font-weight-bold" href="{% url 'menu' %}">Menú</a>
                     </li>
-                    <li class="nav-item px-lg-4 {% if request.path == '/menu/' %}active{% endif %}">
-                        <a class="nav-link text-uppercase text-expanded font-weight-bold" href="{% url 'profiles:list' %}">Staf</a>
+                    <li class="nav-item px-lg-4 {% if request.path == '/menu/createPedido/' %}active{% endif %}">
+                        <a class="nav-link text-uppercase text-expanded font-weight-bold" href="{% url 'menu:createPedidos' %}">Elije</a>
                     </li>
-                    <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
-                        <a class="nav-link text-uppercase font-weight-bold" href="{% url 'about' %}">Acerca de</a>
+                    <li class="nav-item {% if request.path == '/menu/pedido/' %}active{% endif %}">
+                        <a class="nav-link text-uppercase font-weight-bold" href="{% url 'pedido' %}">Pedido</a> 
                     </li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item px-lg-4 {% if request.path == '/profiles/' %}active{% endif %}">
+                            <a class="nav-link text-uppercase text-expanded font-weight-bold" href="{% url 'profiles:list' %}">Staf</a>
+                        </li>
+                    {% endif %}
                 </ul>
                 <ul class="navbar-nav">
                     {% if not request.user.is_authenticated %}
-                        <li class="nav-item">
+                        <li class="nav-item {% if request.path == '/accounts/login/' %}active{% endif %}">
                         <a class="nav-link" href="{% url 'login' %}">Acceder</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item {% if request.path == '/accounts/signup/' %}active{% endif %}">
                         <a class="nav-link" href="{% url 'signup' %}">Registro</a>
+                        </li>
+                        <li class="nav-item {% if request.path == '/about/' %}active{% endif %}">
+                            <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                        <a class="nav-link" href="">Mensajes</a>
+                        <a class="nav-link text-uppercase text-expanded font-weight-bold" href="">Usuario: {{request.user.username}}</a>
                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
+                        <li class="nav-item {% if request.path == '/accounts/profile/' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'profile' %}">Actualizar Perfil</a>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link" href="{% url 'logout' %}">Salir</a>

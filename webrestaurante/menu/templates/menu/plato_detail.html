@@ -7,11 +7,11 @@
   <div class="container">
     <div class="row mt-3">
       <div class="col-md-9 mx-auto">
-        <h2 class="section-heading mb-4">{{object.nombre}}</h2>
+        <h2 class="section-heading mb-4">{{object}}</h2>
         <div>
           {{plato.nombre|safe}}
           {% if request.user.is_staff %}
-            <p><a href="{% url 'menu:update' plato.plato_id %}">Editar</a></p>
+            <p><a href="{% url 'menu:updatePlato' plato_id %}">Editar</a></p>
           {% endif %}
         </div>
       </div>

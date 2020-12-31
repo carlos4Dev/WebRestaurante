@@ -11,7 +11,7 @@
         <div>
           {{menu.content|safe}}
           {% if request.user.is_staff %}
-            <p><a href="{% url 'menu:update' categoria.id %}">Editar</a></p>
+            <p><a href="{% url 'menu:updateCategoria' categoria.categoria_id %}">Editar</a></p>
           {% endif %}
         </div>
       </div>

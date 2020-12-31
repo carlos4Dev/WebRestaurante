@@ -10,11 +10,10 @@
         <div class="col-md-9 mx-auto">
           <h2 class="mb-4">{{plato.nombre}}</h2>
           <div>
-            <p>{{plato.nombre|striptags|safe|truncatechars:"200"}}</p>
-            <p><a href="{% url 'menu:plato' menu.plato.plato_id menu.plato.nombre|slugify %}">Leer más</a>
+            <p>
               {% if request.user.is_staff %}
-                | <a href="{% url 'menu:update' menu.plato_id %}">Editar</a>
-                | <a href="{% url 'menu:delete' menu.plato_id %}">Borrar</a>
+                <a href="{% url 'menu:updatePlato' plato.plato_id %}">Editar</a>
+                | <a href="{% url 'menu:deletePlato' plato.plato_id %}">Borrar</a>
               {% endif %}
             </p>
           </div>
