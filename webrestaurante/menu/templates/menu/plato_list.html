@@ -14,6 +14,7 @@
               {% if request.user.is_staff %}
                 <a href="{% url 'menu:updatePlato' plato.plato_id %}">Editar</a>
                 | <a href="{% url 'menu:deletePlato' plato.plato_id %}">Borrar</a>
+                | <a href="{% url 'menu:plato' plato.plato_id %}">Detalle</a>
               {% endif %}
             </p>
           </div>

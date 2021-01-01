@@ -13,7 +13,9 @@
             <p>{{pedido.status}}</p>
             <p>
               <a href="{% url 'menu:updatePedidos' pedido.pedido_id %}">Editar Pedido</a>
+              {% if request.user.is_staff %}
               | <a href="{% url 'menu:deletePedidos' pedido.pedido_id %}">Eliminar Pedido</a>
+              {% endif %}
               | <a href="{% url 'menu:pedido' pedido.pedido_id %}">Detalle Pedido</a>
             </p>
           </div>

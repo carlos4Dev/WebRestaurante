@@ -11,7 +11,7 @@
           {% if 'ok' in request.GET %}
             <p style="color:green;">
               Categoría editada correctamente. 
-              <a href="">Haz clic aquí para ver el resultado</a>.
+              <a href="{% url 'menu:categoria' categoria.categoria_id %}">Haz clic aquí para ver el resultado</a>.
             </p>
           {% endif %}
           <form action="" method="post">{% csrf_token %}

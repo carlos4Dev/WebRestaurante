@@ -9,10 +9,13 @@
       <div class="col-md-9 mx-auto">
         <h2 class="section-heading mb-4">{{object}}</h2>
         <div>
-          {{plato.nombre|safe}}
+          <h3>{{plato.categoria_id}}</h3>
+          <h3>{{plato.precio}} €</h3>
           {% if request.user.is_staff %}
-            <p><a href="{% url 'menu:updatePlato' plato_id %}">Editar</a></p>
+            <p><a href="{% url 'menu:updatePlato' plato.plato_id %}">Editar</a>
           {% endif %}
+              | <a href="{% url 'menu:platos' %}">Lista de platos</a>
+            </p>
         </div>
       </div>
     </div>

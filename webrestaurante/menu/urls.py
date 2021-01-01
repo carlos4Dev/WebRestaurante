@@ -10,7 +10,7 @@ urlpatterns = [
 
 menu_patterns = ([
     path('categorias/', CategoriaListView.as_view(), name='categorias'),
-    path('<int:pk>/<slug:slug>/', CategoriaDetailView.as_view(), name='categoria'),
+    path('categoria/<int:pk>/', CategoriaDetailView.as_view(), name='categoria'),
     path('createCategoria/', CategoriaCreate.as_view(), name='createCategoria'),
     path('updateCategoria/<int:pk>/', CategoriaUpdate.as_view(), name='updateCategoria'),
     path('deleteCategoria/<int:pk>/', CategoriaDelete.as_view(), name='deleteCategoria'),

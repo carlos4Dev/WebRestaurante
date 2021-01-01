@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.admin.views.decorators import staff_member_required
 from django.utils.decorators import method_decorator
 from django.urls import reverse, reverse_lazy
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import Categoria, Plato, Pedidos
 from .forms import CategoriaForm, PlatoForm, PedidosForm
 
@@ -38,7 +38,7 @@ class CategoriaUpdate(UpdateView):
     template_name = 'menu/categoria_update_form.html'
 
     def get_success_url(self):
-        return reverse_lazy('menu:categorias')
+        return reverse_lazy('menu:updateCategoria', args=[self.object.categoria_id]) + '?ok'
 
 @method_decorator(staff_member_required, name='dispatch')
 class CategoriaDelete(DeleteView):
@@ -53,11 +53,6 @@ class PlatoListView(ListView):
 
 class PlatoDetailView(DetailView):
     model = Plato
-    form_class = PlatoForm
-    template_name = 'menu/plato_detail.html'
-
-    def get_success_url(self):
-        return reverse_lazy('menu:plato', args=[self.object.plato_id]) + '?ok'
 
 @method_decorator(staff_member_required, name='dispatch')
 class PlatoCreate(CreateView):
@@ -94,7 +89,6 @@ def pedido(request):
     pedidos = Pedidos.objects.all()
     return render(request, "menu/pedido.html", {'categorias':categorias, 'platos':platos, 'pedidos':pedidos})
 
-@method_decorator(staff_member_required, name='dispatch')
 class PedidosListView(ListView):
     context_object_name = "pedido_list"
     queryset = Pedidos.objects.all()
@@ -102,11 +96,7 @@ class PedidosListView(ListView):
 
 class PedidosDetailView(DetailView):
     model = Pedidos
-    #context_object_name = "pedido_list"
-    #queryset = Pedidos.objects.all()
-    #template_name = "menu/pedidos_detail.html"
-
-
+ 
 class PedidosCreate(CreateView):
     model = Pedidos
     form_class = PedidosForm

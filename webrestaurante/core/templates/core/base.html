@@ -37,6 +37,9 @@
                     <li class="nav-item {% if request.path == '/menu/pedido/' %}active{% endif %}">
                         <a class="nav-link text-uppercase font-weight-bold" href="{% url 'pedido' %}">Pedido</a> 
                     </li>
+                    <li class="nav-item {% if request.path == '/menu/pedidos/' %}active{% endif %}">
+                        <a class="nav-link text-uppercase font-weight-bold" href="{% url 'menu:pedidos' %}">Lista Pedidos</a> 
+                    </li>
                     {% if request.user.is_authenticated %}
                         <li class="nav-item px-lg-4 {% if request.path == '/profiles/' %}active{% endif %}">
                             <a class="nav-link text-uppercase text-expanded font-weight-bold" href="{% url 'profiles:list' %}">Staf</a>

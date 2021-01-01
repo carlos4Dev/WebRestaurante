@@ -1,14 +1,14 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block title %}{{pedido.pedido_id}}{% endblock %}
+{% block title %}Pedido nº{{object.pedido_id}}{% endblock %}
 {% block content %}
 {% include 'menu/includes/menu_menu.html' %}
 <main role="main">
   <div class="container">
     <div class="row mt-3">
       <div class="col-md-9 mx-auto">
-        <h2 class="section-heading mb-4">{{object}}</h2>
         <h2 class="section-heading mb-4">Pedido nº: {{object.pedido_id}}</h2>
+        <h2 class="section-heading mb-4">{{object}}</h2>
         <h3 class="section-heading mb-4">Estado: {{object.status}}</h3>
         <h4 class="section-heading mb-4">Plato nº: {{object.nombre}}</h4>
         {% for pedido in pedidos_list|dictsort:"pedido_id" reversed %}
@@ -16,8 +16,10 @@
         {% endfor %}
         <div>     
           {% if request.user.is_staff %}
-            <p><a href="{% url 'menu:updatePedidos' pedidos.pedido_id %}">Editar</a></p>
-          {% endif %}
+            <p><a href="{% url 'menu:updatePedidos' pedidos.pedido_id %}">Editar </a>|
+              {% endif %}
+             <a href="{% url 'menu:pedidos' %}"> Lista de Pedidos</a>
+          </p>
         </div>
       </div>
     </div>
