@@ -41,5 +41,5 @@ class PedidosForm(forms.ModelForm):
             'status':forms.Select(attrs={'class':'form-control'})
         }
         labels = {
-            'pedido_id':'Número pedido', 'cliente':'Nombre', 'nombre':'Plato', 'status':'Estado'
+            'pedido_id':'Número pedido', 'cliente':'Nombre', 'nombre':'Platos (Pulse Ctrl + los platos que desee):', 'status':'Estado'
         }

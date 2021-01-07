@@ -30,7 +30,7 @@ class Plato(models.Model):
 
 
 EN_PROCESO = 'PROCESO'
-ENTREGADO = 'ENTREGA'
+ENTREGADO = 'ENTREGADO'
 PAGADO = 'PAGADO'
 STATUS_CHOICES = [
     {EN_PROCESO, 'En_proceso'},

@@ -5,10 +5,10 @@
 {% include 'menu/includes/menu_menu.html' %}
     
     <h1 style="color:olivedrab">Menú para hoy:</h1>
-    {% for categoria in categorias %}
+    {% for categoria in categorias|dictsort:"categoria_id"  %}
         <div>
-            <h2 style="color:darkslategray">{{ categoria }}</h2>
-            {% for plato in platos %}
+            <h2 style="color:darkslategray">{{ categoria.nombre }}</h2>
+            {% for plato in platos|dictsort:"nombre" %}
             <div>
                 <h3 style="color:darkcyan">{% if plato.categoria_id_id == categoria.categoria_id %}{{ plato }} - {{plato.precio}} € {% endif %}</h3>
             </div>

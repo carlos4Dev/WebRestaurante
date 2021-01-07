@@ -14,18 +14,13 @@
                 <img src="{{profile.avatar.url}}" class="img-fluid">
               {% else %}
                 <img src="{% static 'registration/img/no-avatar.jpg' %}" class="img-fluid">
-              {% endif %}
-              {% if request.user != profile.user %}
-                <a href="{% url 'messenger:start' profile.user.username %}" class="btn btn-primary btn-sm btn-block mt-3">
-                  Enviar mensaje
-                </a>
-              {% endif %}
+              {% endif %}              
             </div>
             <!-- Campos -->
             <div class="col-md-10">
               <h2>Perfil de:</h2>
               <h3>{{profile.user}}</h3>
-              {% if profile.bio %}<p>{{profile.bio}}</p>{% endif %}
+              {% if profile.bio %}<h4>{{profile.bio}}</h4>{% endif %}
               {% if profile.link %}<p><a href="{{profile.link}}" target="_blank">{{profile.link}}</a></p>{% endif %}
             </div>
           </div>

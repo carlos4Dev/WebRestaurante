@@ -4,8 +4,7 @@ from .views import CategoriaListView, CategoriaDetailView, CategoriaCreate, Cate
 from . import views
 
 urlpatterns = [
-    path('', views.menu, name="menu"),
-    path('pedido/', views.pedido, name="pedido")
+    path('', views.menu, name="menu")
 ]
 
 menu_patterns = ([

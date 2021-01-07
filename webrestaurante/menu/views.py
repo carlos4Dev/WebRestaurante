@@ -83,12 +83,6 @@ def menu(request):
     platos = Plato.objects.all()
     return render(request, "menu/menu.html", {'categorias':categorias, 'platos':platos})
 
-def pedido(request):
-    categorias = Categoria.objects.all()
-    platos = Plato.objects.all()
-    pedidos = Pedidos.objects.all()
-    return render(request, "menu/pedido.html", {'categorias':categorias, 'platos':platos, 'pedidos':pedidos})
-
 class PedidosListView(ListView):
     context_object_name = "pedido_list"
     queryset = Pedidos.objects.all()

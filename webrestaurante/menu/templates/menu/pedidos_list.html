@@ -8,15 +8,30 @@
     {% for pedido in pedido_list|dictsort:"pedido_id" reversed %}
       <div class="row mt-3">
         <div class="col-md-9 mx-auto">
-          <h2 class="mb-4">{{pedido.cliente}}</h2>
+          <h2 class="mb-4">Nº {{pedido.pedido_id}}: {{pedido.cliente}}</h2>
           <div>
-            <p>{{pedido.status}}</p>
+            {% if pedido.status == "En_proceso" or pedido.status == "PROCESO" %}
+              <h3 class="section-heading mb-4" style="color: red;"> 
+                {{pedido.status}}
+              </h3>
+            {% endif %}
+            {% if pedido.status == "Entregado" or pedido.status == "ENTREGADO" %}
+              <h3 class="section-heading mb-4" style="color: yellow;"> 
+                {{pedido.status}}
+              </h3>
+            {% endif %}
+            {% if pedido.status == "Pagado" or pedido.status == "PAGADO" %}
+              <h3 class="section-heading mb-4" style="color: green;"> 
+                {{pedido.status}}
+              </h3>
+            {% endif %}
+            
             <p>
-              <a href="{% url 'menu:updatePedidos' pedido.pedido_id %}">Editar Pedido</a>
               {% if request.user.is_staff %}
-              | <a href="{% url 'menu:deletePedidos' pedido.pedido_id %}">Eliminar Pedido</a>
+              <a href="{% url 'menu:updatePedidos' pedido.pedido_id %}">Editar Pedido</a>
+              | <a href="{% url 'menu:deletePedidos' pedido.pedido_id %}">Eliminar Pedido |</a>
               {% endif %}
-              | <a href="{% url 'menu:pedido' pedido.pedido_id %}">Detalle Pedido</a>
+              <a href="{% url 'menu:pedido' pedido.pedido_id %}">Detalle Pedido</a>
             </p>
           </div>
         </div>

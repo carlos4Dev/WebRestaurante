@@ -12,6 +12,8 @@
 
     <!-- Bootstrapp -->
     <link href="{% static 'externo/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo&family=Gugi&family=Monda:wght@700&display=swap" rel="stylesheet">
     <link href="{% static 'externo/css/main.css' %}" type="text/css" rel="stylesheet">
     <link href="{% static 'externo/css/style.css' %}" type="text/css" rel="stylesheet">
     
@@ -21,7 +23,7 @@
     <!-- Navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sytle="background-color:#e3f2fd;">
         <div class="container">
-            <a class="navbar-brand text-uppercase text-expanded font-weight-bold" href="{% url 'home' %}">BitBrasas</a>
+            <a class="navbar-brand text-uppercase text-expandeds" href="{% url 'home' %}" style="font-family: Gugi; color:coral">BitBrasas</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ned" aria-controls="ned" aria-expanded="false">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,9 +35,6 @@
                     </li>
                     <li class="nav-item px-lg-4 {% if request.path == '/menu/createPedido/' %}active{% endif %}">
                         <a class="nav-link text-uppercase text-expanded font-weight-bold" href="{% url 'menu:createPedidos' %}">Elije</a>
-                    </li>
-                    <li class="nav-item {% if request.path == '/menu/pedido/' %}active{% endif %}">
-                        <a class="nav-link text-uppercase font-weight-bold" href="{% url 'pedido' %}">Pedido</a> 
                     </li>
                     <li class="nav-item {% if request.path == '/menu/pedidos/' %}active{% endif %}">
                         <a class="nav-link text-uppercase font-weight-bold" href="{% url 'menu:pedidos' %}">Lista Pedidos</a> 
