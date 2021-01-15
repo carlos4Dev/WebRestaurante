@@ -1,7 +1,7 @@
 from django.urls import path
+from . import views
 from .views import CategoriaListView, CategoriaDetailView, CategoriaCreate, CategoriaUpdate, CategoriaDelete, PlatoListView, PlatoDetailView, PlatoCreate, PlatoUpdate, PlatoDelete, PedidosListView, PedidosDetailView, PedidosCreate, PedidosUpdate, PedidosDelete
 
-from . import views
 
 urlpatterns = [
     path('', views.menu, name="menu")
@@ -23,4 +23,5 @@ menu_patterns = ([
     path('createPedidos/', PedidosCreate.as_view(), name='createPedidos'),
     path('updatePedidos/<int:pk>/',PedidosUpdate.as_view(), name='updatePedidos'),
     path('deletePedidos/<int:pk>/', PedidosDelete.as_view(), name='deletePedidos')
+    
 ], 'menu')

@@ -1,7 +1,17 @@
 # WebRestaurante
 
-Proyecto apllicaciÛn web que simular· la gestiÛn de la web de un restaurante.
+Proyecto apllicaci√≥n web que simular√° la gesti√≥n de la web de un restaurante.
 
-Este proyecto corresponde a un conjunto de tres ex·menes del curso **Python Web Programmer** realizado en **Intecssa**.
+Este proyecto corresponde a un conjunto de tres ex√°menes del curso **Python Web Programmer** realizado en **Intecssa**.
 
-Se utilizar· el *framework* **Django** y la base de datos **PostgreSQL**.
+Se utilizar√° el *framework* **Django** y la base de datos **PostgreSQL**.
+
+## Capturas
+Men√∫
+![](webrestaurante/media/capturas/Detalle_01.png)
+Selecci√≥n de platos por parte de un cliente
+![](webrestaurante/media/capturas/Detalle_02.png)
+Detalle de  un pedido
+![](webrestaurante/media/capturas/Detalle_03.png)
+Listado de pedidos (usuario registrado)
+![](webrestaurante/media/capturas/Detalle_04.png)

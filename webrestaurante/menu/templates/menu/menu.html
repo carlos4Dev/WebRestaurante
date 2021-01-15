@@ -4,13 +4,13 @@
 {% block content %}
 {% include 'menu/includes/menu_menu.html' %}
     
-    <h1 style="color:olivedrab">Menú para hoy:</h1>
+    <h1 style="color:rgb(7, 0, 19)">Menú para hoy:</h1>
     {% for categoria in categorias|dictsort:"categoria_id"  %}
         <div>
-            <h2 style="color:darkslategray">{{ categoria.nombre }}</h2>
+            <h2 style="color:rgb(69, 87, 148)">{{ categoria.nombre }}</h2>
             {% for plato in platos|dictsort:"nombre" %}
             <div>
-                <h3 style="color:darkcyan">{% if plato.categoria_id_id == categoria.categoria_id %}{{ plato }} - {{plato.precio}} € {% endif %}</h3>
+                <h3 style="color:rgb(100, 100, 100)">{% if plato.categoria_id_id == categoria.categoria_id %}{{ plato }} - {{plato.precio}} € {% endif %}</h3>
             </div>
             {% endfor %}
         </div>

@@ -29,16 +29,15 @@ class Plato(models.Model):
         return self.nombre
 
 
-EN_PROCESO = 'PROCESO'
-ENTREGADO = 'ENTREGADO'
-PAGADO = 'PAGADO'
-STATUS_CHOICES = [
-    {EN_PROCESO, 'En_proceso'},
-    {ENTREGADO, 'Entregado'},
-    {PAGADO, 'Pagado'},
-]
-
 class Pedidos(models.Model):
+    EN_PROCESO = 'PROCESO'
+    TERMINADO= 'TERMINADO'
+    PAGADO = 'PAGADO'
+    STATUS_CHOICES = (
+        (EN_PROCESO, 'En_proceso'),
+        (TERMINADO, 'Terminado'),
+        (PAGADO, 'Pagado')
+    )
     pedido_id = models.AutoField(primary_key=True, verbose_name="Número pedido")
     cliente = models.CharField(max_length=100, verbose_name="Nombre cliente")
     nombre = models.ManyToManyField(Plato, verbose_name="Platos", related_name="get_pedidos")
@@ -49,4 +48,6 @@ class Pedidos(models.Model):
         verbose_name_plural = "pedidos"
         ordering = ['nombre']
         return self.cliente
+
+    
  

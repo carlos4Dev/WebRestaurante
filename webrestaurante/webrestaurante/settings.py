@@ -32,26 +32,39 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'registration',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'core',
     'menu.apps.MenuConfig',
     'profiles',
+    'rest_framework'
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+    'localhost:3333',
+    '127.0.0.1:3000',
+    '127.0.0.1:3333'
+)
 
 ROOT_URLCONF = 'webrestaurante.urls'
 
@@ -142,3 +155,4 @@ if DEBUG:
 else:
     # Aquí hay que configurar un email real para producción
     pass
+

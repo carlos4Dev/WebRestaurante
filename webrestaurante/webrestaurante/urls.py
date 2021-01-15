@@ -15,9 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from menu import views
 from menu.urls import menu_patterns
 from profiles.urls import profiles_patterns
 from django.conf import settings
+
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+
+# En el router vamos añadiendo los endpoints a los viewsets
+router.register('pedidos', views.PedidosViewSet)
 
 urlpatterns = [
     # Path del core
@@ -31,5 +39,9 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('registration.urls')),
     # Paths de profiles
-    path('profiles/', include(profiles_patterns))
+    path('profiles/', include(profiles_patterns)),
+
+    # Paths de la API
+    path('menu/v1/', include(router.urls)),
+    path('menu/v1/terminado/', views.CambiarEstadoPedido.as_view())
 ]

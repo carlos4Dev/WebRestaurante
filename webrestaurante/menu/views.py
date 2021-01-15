@@ -7,6 +7,9 @@ from django.urls import reverse, reverse_lazy
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Categoria, Plato, Pedidos
 from .forms import CategoriaForm, PlatoForm, PedidosForm
+from .serializers import PedidosSerializer
+from rest_framework import viewsets, views
+from rest_framework.response import Response
 
 class StaffRequiredMixin(object):
     """
@@ -112,3 +115,37 @@ class PedidosDelete(DeleteView):
 
     def get_success_url(self):
         return reverse_lazy('menu:pedidos')
+
+class PedidosViewSet(viewsets.ModelViewSet):
+    queryset = Pedidos.objects.all()
+    serializer_class = PedidosSerializer
+
+class CambiarEstadoPedido(views.APIView):
+
+    # PUT -> Se usa par crear un recurso
+    # POST -> Se usa para modificar/actualizar un resurso
+    def put(self, request):
+        pedido = get_object_or_404(
+            Pedidos, pedido_id=self.request.data.get('pedido_id', 0)
+        )
+
+        terminado, created = Pedidos.objects.get_or_create(
+            cliente=pedido
+        )
+
+        # Por defecto suponemos que se crea bien
+        content = {
+            'pedido_id': pedido.pedido_id,
+            'terminado': True
+        }
+
+        # Si no se ha creado es que ya existe entonces borramos el terminado
+        if not created:
+            terminado.delete()
+            content['terminado'] = False
+
+        return Response(content)
+
+
+
+    
