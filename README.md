@@ -8,10 +8,10 @@ Se utilizará el *framework* **Django** y la base de datos **PostgreSQL**.
 
 ## Capturas
 Menú
-![](webrestaurante/media/capturas/Detalle_01.png)
+![](webrestaurante/core/static/externo/capturas/Detalle_01.png)
 Selección de platos por parte de un cliente
-![](webrestaurante/media/capturas/Detalle_02.png)
+![](webrestaurante/core/static/externo/capturas//Detalle_02.png)
 Detalle de  un pedido
-![](webrestaurante/media/capturas/Detalle_03.png)
+![](webrestaurante/core/static/externo/capturas/Detalle_03.png)
 Listado de pedidos (usuario registrado)
-![](webrestaurante/media/capturas/Detalle_04.png)
+![](webrestaurante/core/static/externo/capturas/Detalle_04.png)
