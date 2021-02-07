@@ -46,3 +46,58 @@ footer p {
 img {
     max-width: 100%;
 }
+
+.socialNetwork {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border:2px solid gray;
+    border-radius: 50%;
+    box-sizing: border-box;
+    color:grey;
+    animation: out 0.25s linear both;
+}
+.socialNetwork:before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.socialNetwork:hover {
+    animation: in 0.25s linear both;
+}
+.socialNetwork:hover>div {
+    animation: inBackground 0.25s linear both;
+}
+.socialNetwork>div {
+    position:relative;
+    width:0%;
+    height:0%;
+    top:50%;
+    left:50%;
+    background-color: rgb(2, 117, 248);
+    border-radius: 50%;
+    z-index: -1;
+}
+@keyframes in {
+    to {
+        color:white;
+        font-size:24px;
+    }
+}
+@keyframes out {
+    to {
+        color:grey;
+        font-size:20px;
+    }
+}
+@keyframes inBackground {
+    to {
+        width: 100%;
+        height:100%;
+        left:0%;
+        top:0%;
+    }
+}
